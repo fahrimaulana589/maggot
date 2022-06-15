@@ -2,24 +2,26 @@
 
 namespace App\Package\Tutorial\Orchid\Screens;
 
+use App\Package\Tutorial\Model\Step;
+use App\Package\Tutorial\Model\Tutorial;
+use App\Package\Tutorial\Orchid\Layouts\TutorialShowLayout;
 use Orchid\Screen\Screen;
 
-class TutorialShowScreen extends Screen
+class TutorialShowScreen extends TutorialScreen
 {
+    public Tutorial $tutorial;
+
     /**
      * Query data.
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(Tutorial $tutorial): iterable
     {
-        return [];
-    }
+        $this->tutorial = $tutorial;
 
-    public function permission(): ?iterable
-    {
         return [
-            "platform.websites.tutorials"
+            "steps" => $this->tutorial->steps
         ];
     }
 
@@ -30,7 +32,7 @@ class TutorialShowScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'TutorialShowScreen';
+        return $this->tutorial->title;
     }
 
     /**
@@ -40,7 +42,12 @@ class TutorialShowScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            $this->getOrchidComponent()->linkBack()
+                ->route("platform.websites.tutorials"),
+            $this->getOrchidComponent()->linkAdd()
+                ->route("platform.websites.tutorials.steps.add",$this->tutorial->id),
+        ];
     }
 
     /**
@@ -50,6 +57,15 @@ class TutorialShowScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            TutorialShowLayout::class
+        ];
+    }
+
+    public function remove(Step $step){
+
+        $this->getTutorialService()->deleteStep($step);
+
+        $this->getOrchidComponent()->toastSukses("Hapus","Step");
     }
 }

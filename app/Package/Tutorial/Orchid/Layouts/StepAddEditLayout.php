@@ -2,10 +2,12 @@
 
 namespace App\Package\Tutorial\Orchid\Layouts;
 
+use App\Package\Base\Orchid\Layouts\OrchidRowsLayout;
+use App\Package\Base\Orchid\Layouts\OrchidTableLayout;
 use Orchid\Screen\Field;
 use Orchid\Screen\Layouts\Rows;
 
-class StepAddEditLayout extends Rows
+class StepAddEditLayout extends OrchidRowsLayout
 {
     /**
      * Used to create the title of a group of form elements.
@@ -21,6 +23,9 @@ class StepAddEditLayout extends Rows
      */
     protected function fields(): iterable
     {
-        return [];
+        return [
+            $this->getOrchidRow()->rowText("step.title","Judul"),
+            $this->getOrchidRow()->rowText("step.video","Video"),
+        ];
     }
 }

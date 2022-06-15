@@ -15,9 +15,10 @@ use Orchid\Support\Facades\Layout;
 class OrchidTable
 {
 
-    public function tableText(String $name, String $title): TD{
+    public function tableText(string $name, string $title): TD
+    {
 
-        return TD::make($name,$title)
+        return TD::make($name, $title)
             ->sort()
             ->filter(
                 Input::class
@@ -25,9 +26,10 @@ class OrchidTable
 
     }
 
-    public function tableLink(String $name, String $title) : TD{
+    public function tableLink(string $name, string $title): TD
+    {
 
-        return TD::make($name,$title)
+        return TD::make($name, $title)
             ->sort()
             ->filter(
                 Input::class
@@ -35,7 +37,7 @@ class OrchidTable
 
     }
 
-    public function tableAction(Closure $param) : TD
+    public function tableAction(Closure $param): TD
     {
 
         return TD::make(__('Actions'),)
@@ -48,19 +50,50 @@ class OrchidTable
             });
     }
 
-    public function tableImage(String $name, String $title) : TD
+    public function tableImage(string $name, string $title): TD
     {
 
-        return TD::make($name,$title)
+        return TD::make($name, $title)
             ->sort()
             ->filter(
                 Input::class
             )
             ->render(
-                function ($value){
-                    return view("base::imageOrchid",["value" => $value]);
+                function ($value) {
+                    return view("base::imageOrchid", ["value" => $value]);
                 }
             );
 
+    }
+
+    public function tableVideo(string $name, string $title): TD
+    {
+
+        return TD::make($name, $title)
+            ->sort()
+            ->filter(
+                Input::class
+            )
+            ->render(
+                function ($value) {
+                    dd($value);
+                    return view("base::videoOrchid", ["value" => $value]);
+                }
+            );
+    }
+
+    public function tableContent(string $name, string $title)
+    {
+
+        return TD::make($name, $title)
+            ->sort()
+            ->filter(
+                Input::class
+            )
+            ->render(
+                function ($value) {
+                    return view("base::contentOrchid", ["value" => $value]);
+                }
+            );
     }
 }

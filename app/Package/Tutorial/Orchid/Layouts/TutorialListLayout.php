@@ -29,9 +29,11 @@ class TutorialListLayout extends OrchidTableLayout
         return [
             $this->getOrchidTable()->tableImage("image","Gambar"),
             $this->getOrchidTable()->tableText("title","Judul"),
-            $this->getOrchidTable()->tableText("description","Deskripsi"),
+            $this->getOrchidTable()->tableContent("description","Deskripsi"),
             $this->getOrchidTable()->tableAction(function ($data){
                 return [
+                    $this->getOrchidComponent()->linkShow()
+                        ->route("platform.websites.tutorials.show",[$data->id]),
                     $this->getOrchidComponent()->linkEdit()
                         ->route("platform.websites.tutorials.edit",[$data->id]),
                     $this->getOrchidComponent()->buttonDelete($data->id)

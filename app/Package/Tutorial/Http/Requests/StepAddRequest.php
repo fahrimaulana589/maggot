@@ -4,7 +4,7 @@ namespace App\Package\Tutorial\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StepAddRequest extends FormRequest
+class StepAddRequest extends StepRequest
 {
     public function rules(): array
     {

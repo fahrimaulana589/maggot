@@ -13,6 +13,7 @@ class OrchidRequest extends FormRequest
             "unique" => ":attribute sudah digunakan",
             "numeric" => ":attribute harusa menggunkan angka",
             "boolean" => ":attribute harus menggunkan angka 1 atu 0",
+            "mimes" => ":attribute harus menggunkan file mp4"
         ];
     }
 }

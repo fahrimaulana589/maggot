@@ -2,18 +2,26 @@
 
 namespace App\Package\Tutorial\Orchid\Screens;
 
-use Orchid\Screen\Screen;
+use App\Package\Tutorial\Http\Requests\StepAddRequest;
+use App\Package\Tutorial\Model\Tutorial;
+use App\Package\Tutorial\Orchid\Layouts\StepAddEditLayout;
+use Orchid\Support\Facades\Layout;
 
-class StepAddScreen extends Screen
+class StepAddScreen extends TutorialScreen
 {
+    public Tutorial $tutorial;
+
     /**
      * Query data.
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(Tutorial $tutorial): iterable
     {
-        return [];
+        $this->tutorial = $tutorial;
+        return [
+            "tutorial" => $this->tutorial
+        ];
     }
 
     /**
@@ -23,14 +31,7 @@ class StepAddScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'StepAddScreen';
-    }
-
-    public function permission(): ?iterable
-    {
-        return [
-            "platform.websites.tutorials"
-        ];
+        return $this->tutorial->title;
     }
 
     /**
@@ -40,7 +41,11 @@ class StepAddScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            $this->getOrchidComponent()->linkBack()
+                ->route("platform.websites.tutorials.show", $this->tutorial->id),
+            $this->getOrchidComponent()->buttonSave()
+        ];
     }
 
     /**
@@ -50,6 +55,22 @@ class StepAddScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            Layout::block(StepAddEditLayout::class)
+                ->title("Step")
+                ->description("Masukan Data"),
+            Layout::rows([
+                $this->getOrchidRow()->rowContent("step.description", "Deskripsi"),
+            ])
+        ];
+    }
+
+    public function save(StepAddRequest $request, Tutorial $tutorial)
+    {
+        $this->getTutorialService()->createStep($request, $tutorial);
+
+        $this->getOrchidComponent()->toastSukses("Simpan","Step");
+
+        return redirect()->route("platform.websites.tutorials.show",$tutorial->id);
     }
 }

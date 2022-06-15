@@ -26,13 +26,6 @@ class TutorialEditScreen extends TutorialScreen
         ];
     }
 
-    public function permission(): ?iterable
-    {
-        return [
-            "platform.websites.tutorials"
-        ];
-    }
-
     /**
      * Display header name.
      *
@@ -67,8 +60,11 @@ class TutorialEditScreen extends TutorialScreen
     {
         return [
             Layout::block(TutorialAddEditLayout::class)
-                ->title("Tutorial")
-                ->description("Silahkan masukan data tutorial")
+                ->title("TutorialController")
+                ->description("Silahkan masukan data tutorial"),
+            Layout::rows([
+                $this->getOrchidRow()->rowContent("tutorial.description","Deskripsi"),
+            ])
         ];
     }
 
@@ -76,7 +72,7 @@ class TutorialEditScreen extends TutorialScreen
 
         $this->getTutorialService()->edit($request,$tutorial);
 
-        $this->getOrchidComponent()->toastSukses("Edit","Tutorial");
+        $this->getOrchidComponent()->toastSukses("Edit","TutorialController");
 
     }
 
@@ -84,7 +80,7 @@ class TutorialEditScreen extends TutorialScreen
 
         $this->getTutorialService()->delete($tutorial);
 
-        $this->getOrchidComponent()->toastSukses("Edit","Tutorial");
+        $this->getOrchidComponent()->toastSukses("Edit","TutorialController");
         return redirect()->route("platform.websites.tutorials");
     }
 }

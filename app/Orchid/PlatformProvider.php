@@ -42,7 +42,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.websites.profile')
                 ->title(__('Aplikasi')),
 
-            Menu::make(__('Menu'))
+            Menu::make(__(' Menu'))
                 ->icon('link')
                 ->route('platform.websites.menus')
                 ->permission('platform.websites.menus'),
@@ -84,7 +84,7 @@ class PlatformProvider extends OrchidServiceProvider
     public function registerProfileMenu(): array
     {
         return [
-            Menu::make('Profile')
+            Menu::make('ProfileController')
                 ->route('platform.profile')
                 ->icon('user'),
         ];
@@ -102,10 +102,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.dashboard', __('Dashboard'))
             ,
             ItemPermission::group(__('Website'))
-                ->addPermission('platform.websites.profile', __('Profile'))
-                ->addPermission('platform.websites.menus', __('menu'))
-                ->addPermission('platform.websites.pages', __('Page'))
-                ->addPermission('platform.websites.slides', __('Slide'))
+                ->addPermission('platform.websites.profile', __(' Profile'))
+                ->addPermission('platform.websites.menus', __(' menu'))
+                ->addPermission('platform.websites.pages', __(' Page'))
+                ->addPermission('platform.websites.slides', __(' Slide'))
                 ->addPermission('platform.websites.tutorials', __('Tutorial'))
             ,
         ];

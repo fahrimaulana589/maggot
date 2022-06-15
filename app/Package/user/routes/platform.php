@@ -22,13 +22,13 @@ use Tabuna\Breadcrumbs\Trail;
 |
 */
 
-// Platform > Profile
+// Platform > ProfileController
 Route::screen('profile', UserProfileScreen::class)
     ->name('platform.profile')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.main')
-            ->push(__('Profile'), route('platform.profile'));
+            ->push(__('ProfileController'), route('platform.profile'));
     });
 
 // Platform > System > Users

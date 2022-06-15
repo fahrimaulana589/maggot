@@ -25,7 +25,7 @@ class TutorialAddScreen extends TutorialScreen
      */
     public function name(): ?string
     {
-        return 'Buat Tutorial';
+        return 'Buat TutorialController';
     }
 
     /**
@@ -51,8 +51,11 @@ class TutorialAddScreen extends TutorialScreen
     {
         return [
             Layout::block(TutorialAddEditLayout::class)
-                ->title("Tutorial")
-                ->description("Silahkan masukan data tutorial")
+                ->title("TutorialController")
+                ->description("Silahkan masukan data tutorial"),
+            Layout::rows([
+                $this->getOrchidRow()->rowContent("tutorial.description","Deskripsi"),
+            ])
         ];
     }
 
@@ -60,7 +63,7 @@ class TutorialAddScreen extends TutorialScreen
 
         $this->getTutorialService()->create($request);
 
-        $this->getOrchidComponent()->toastSukses("Buat","Tutorial");
+        $this->getOrchidComponent()->toastSukses("Buat","TutorialController");
 
         return redirect()->route("platform.websites.tutorials");
     }

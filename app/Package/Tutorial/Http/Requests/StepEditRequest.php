@@ -11,7 +11,7 @@ class StepEditRequest extends StepRequest
         return [
             "step.title" => "required",
             "step.description" => "required",
-            "step.video" => "required"
+            "step.video" => ""
         ];
     }
 }

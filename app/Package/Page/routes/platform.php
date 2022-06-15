@@ -11,7 +11,7 @@ Route::screen('pages', PageListScreen::class)
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.main')
-            ->push(__('Page'), route('platform.websites.pages'));
+            ->push(__('PageController'), route('platform.websites.pages'));
     });
 
 Route::screen('pages/add', PageAddScreen::class)

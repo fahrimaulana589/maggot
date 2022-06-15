@@ -9,5 +9,5 @@ Route::screen('profile-aplikasi', ProfileEditScreen::class)
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.main')
-            ->push(__('Profile'), route('platform.websites.profile'));
+            ->push(__('ProfileController'), route('platform.websites.profile'));
     });

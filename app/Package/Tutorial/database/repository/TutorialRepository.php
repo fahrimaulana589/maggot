@@ -35,4 +35,21 @@ class TutorialRepository implements CrudRepositoryContrak
         return $model->delete();
     }
 
+    public function createStep($data, Model|Tutorial $model)
+    {
+
+        return $model->steps()->create($data);
+    }
+
+    public function editStep($data, Model $model)
+    {
+
+        return $model->fill($data)->save();
+    }
+
+    public function deleteStep(Model $model)
+    {
+        return $model->delete();
+    }
+
 }

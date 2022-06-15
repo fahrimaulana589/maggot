@@ -9,6 +9,7 @@ use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
+use Orchid\Screen\Fields\Upload;
 
 class OrchidRow
 {
@@ -68,12 +69,13 @@ class OrchidRow
             ->title($title);
     }
 
-    public function rowImageFile(string $name, string $title)
+
+    public function rowVideo(string $name, string $title)
     {
-        return Input::make($name)
+        return Upload::make($name)
             ->title($title)
-            ->type("file")
-            ->multiple()
-            ->placeholder("Masukan $title");
+            ->maxFiles(1)
+            ->acceptedFiles("video/mp4")
+            ->maxFileSize(300);
     }
 }

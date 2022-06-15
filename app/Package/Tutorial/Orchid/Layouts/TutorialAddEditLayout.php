@@ -23,7 +23,6 @@ class TutorialAddEditLayout extends OrchidRowsLayout
     {
         return [
             $this->getOrchidRow()->rowText("tutorial.title","Judul"),
-            $this->getOrchidRow()->rowTextArean("tutorial.description","Deskripsi"),
             $this->getOrchidRow()->rowImage("tutorial.image","Gambar"),
         ];
     }

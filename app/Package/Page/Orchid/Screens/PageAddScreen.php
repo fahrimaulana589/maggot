@@ -47,7 +47,7 @@ class PageAddScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Buat Page';
+        return 'Buat PageController';
     }
 
     /**
@@ -73,7 +73,7 @@ class PageAddScreen extends Screen
     {
         return [
             Layout::block(PageAddEditLayout::class)
-                ->title("Page")
+                ->title("PageController")
                 ->description(
                     "Silahkan masukan data data berikut untuk membuta page baru"
                 ),
@@ -90,7 +90,7 @@ class PageAddScreen extends Screen
     public function save(PageAddRequest $request){
 
         $this->pageService->create($request);
-        $this->orchidComponent->toastSukses("Tambah","Page");
+        $this->orchidComponent->toastSukses("Tambah","PageController");
 
         return redirect()->route("platform.websites.pages");
 

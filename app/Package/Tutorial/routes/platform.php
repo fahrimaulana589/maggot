@@ -3,6 +3,8 @@
 use App\Package\Page\Orchid\Screens\PageAddScreen;
 use App\Package\Page\Orchid\Screens\PageEditScreen;
 use App\Package\Page\Orchid\Screens\PageListScreen;
+use App\Package\Tutorial\Orchid\Screens\StepAddScreen;
+use App\Package\Tutorial\Orchid\Screens\StepEditScreen;
 use App\Package\Tutorial\Orchid\Screens\TutorialAddScreen;
 use App\Package\Tutorial\Orchid\Screens\TutorialEditScreen;
 use App\Package\Tutorial\Orchid\Screens\TutorialListScreen;
@@ -45,22 +47,22 @@ Route::screen('tutorials/show/{tutorial}', TutorialShowScreen::class)
     })
     ->whereNumber(["tutorial"]);
 
-Route::screen('tutorials/show/{tutorial}/add', TutorialShowScreen::class)
+Route::screen('tutorials/show/{tutorial}/add', StepAddScreen::class)
     ->name('platform.websites.tutorials.steps.add')
     ->breadcrumbs(function (Trail $trail,$tutorial) {
         return $trail
-            ->parent('platform.websites.tutorials.show')
-            ->push(__('Edit'), route('platform.websites.tutorials.edit',[$tutorial]));
+            ->parent('platform.websites.tutorials.show',$tutorial)
+            ->push(__('Buat'), route('platform.websites.tutorials.steps.add',[$tutorial]));
     })
     ->whereNumber(["tutorial"]);
 
-Route::screen('tutorials/show/{tutorial}/edit/{step}', TutorialShowScreen::class)
+Route::screen('tutorials/show/{tutorial}/edit/{step}', StepEditScreen::class)
     ->name('platform.websites.tutorials.steps.edit')
     ->breadcrumbs(function (Trail $trail,$tutorial,$step) {
         return $trail
-            ->parent('platform.websites.tutorials.show')
+            ->parent('platform.websites.tutorials.show',$tutorial)
             ->push(__('Edit'), route('platform.websites.tutorials.edit',[$tutorial,$step]));
     })
-    ->whereNumber(["tutorial"]);
+    ->whereNumber(["tutorial","step"]);
 
 

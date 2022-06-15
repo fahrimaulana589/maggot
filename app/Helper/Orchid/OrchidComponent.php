@@ -38,12 +38,12 @@ class OrchidComponent
             ->type(Color::SUCCESS());
     }
 
-    public function buttonSave() : Button{
+    public function buttonSave($id = null) : Button{
 
         return Button::make(__("Simpan"))
             ->icon("save")
             ->type(Color::PRIMARY())
-            ->method("save");
+            ->method("save",[$id]);
     }
 
     public function buttonEdit() : Button
@@ -55,18 +55,26 @@ class OrchidComponent
             ->method("edit");
     }
 
-    public function buttonDelete(int $id) : Button{
+    public function buttonDelete(int $id,array $ids = []) : Button{
+        $data = array_merge([$id],$ids);
 
         return Button::make(__("Hapus"))
             ->icon("trash")
             ->type(Color::DANGER())
             ->confirm("Apakah anda yakin akan menghapus ini?")
-            ->method("remove",[$id]);
+            ->method("remove",$data);
     }
 
     public function toastSukses(String $action,String $name) : \Orchid\Alert\Toast{
 
         return Toast::success("Sukses $action $name");
+    }
+
+    public function linkShow()
+    {
+        return Link::make(__("Tampilkan"))
+            ->icon("monitor")
+            ->type(Color::PRIMARY());
     }
 
 
