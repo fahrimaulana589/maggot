@@ -50,10 +50,6 @@ class TutorialService implements CrudServiceContrak
     {
         $data = $request->validated();
 
-        $attachment = Attachment::whereIn("id", $data["step"]["video"])->first();
-
-        $data["step"]["video"] = $attachment->path . $attachment->name . "." . $attachment->extension;
-
         return $this->tutorialRepository->createStep($data["step"], $model);
     }
 
@@ -62,13 +58,6 @@ class TutorialService implements CrudServiceContrak
 
         $data = $request->validated();
         $is_exist = array_key_exists("video", $data["step"]);
-
-        if ($is_exist) {
-            $attachment = Attachment::whereIn("id", $data["step"]["video"])->first();
-            $data["step"]["video"] = $attachment->path . $attachment->name . "." . $attachment->extension;
-        }else{
-            $data["step"]["video"] = $model->video;
-        }
 
         return $this->tutorialRepository->editStep($data["step"], $model);
     }

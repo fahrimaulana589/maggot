@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StepController;
+use App\Http\Controllers\TutorialController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +33,28 @@ Route::get("pages/{page}",[PageController::class,"get"])
     ->name("api.pages.show")
     ->missing(function (){
         return response()->json([
-           "data" => "data tidak ada"
+           "page" => "data tidak ada"
         ]);
     });
 
-Route::get("pages/search/{search}",[PageController::class,"search"])
-    ->name("api.pages.search");
+Route::get("tutorials",[TutorialController::class,"getAll"])
+    ->name("api.tutorials");
+
+Route::get("tutorials/{tutorial}",[TutorialController::class,"get"])
+    ->name("api.tutorials.show")
+    ->missing(function (){
+        return response()->json([
+            "tutorial" => "data tidak ada"
+        ]);
+    });
+
+Route::get("tutorials/{tutorial}/steps",[StepController::class,"getAll"])
+    ->name("api.tutorials.steps");
+
+Route::get("tutorials/{tutorial}/steps/{step}",[StepController::class,"get"])
+    ->name("api.tutorials.steps.show")
+    ->missing(function (){
+        return response()->json([
+            "step" => "data tidak ada"
+        ]);
+    });

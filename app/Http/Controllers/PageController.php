@@ -32,8 +32,4 @@ class PageController extends Controller
         ]);
     }
 
-    public function search(){
-
-
-    }
 }

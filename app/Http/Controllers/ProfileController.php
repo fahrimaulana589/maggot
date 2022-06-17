@@ -31,8 +31,8 @@ class ProfileController extends Controller
 
         return response()->json([
             'profile' => $this->profileService->get(),
-            'slide' => $this->slideService->getAll(),
-            'menu' => $this->menuService->getAll()
+            'slides' => $this->slideService->getAll(),
+            'menus' => $this->menuService->getAll()
         ]);
     }
 }
