@@ -40,20 +40,8 @@ class MenuListLayout extends Table
     {
         return [
             $this->orchidTable->tableText("title","Judul"),
-            $this->orchidTable->tableLink("url","Link")
-                ->render(function ($value){
-                    $url = $value["url"];
-                    return $this->orchidComponent->linkTo("$url")
-                        ->href($url);
-                }),
+            $this->orchidTable->tableText("url","Link"),
             $this->orchidTable->tableText("posision","Posisi"),
-            $this->orchidTable->tableText("subMenu","Sub menu")
-                ->render(function ($value){
-                    if($value->subMenu == null){
-                        return "";
-                    }
-                    return $value->subMenu->title;
-                }),
             $this->orchidTable->tableAction(function ($value){
                 return [
                     $this->orchidComponent->linkEdit()

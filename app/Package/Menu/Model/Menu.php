@@ -68,4 +68,5 @@ class Menu extends Model
 
         return $this->hasMany(Menu::class,"parent")->orderBy("posision","asc");
     }
+
 }

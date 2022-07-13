@@ -4,6 +4,7 @@ use App\Package\Page\Orchid\Screens\PageAddScreen;
 use App\Package\Page\Orchid\Screens\PageEditScreen;
 use App\Package\Page\Orchid\Screens\PageListScreen;
 use App\Package\user\Orchid\Screens\User\UserProfileScreen;
+use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
 Route::screen('pages', PageListScreen::class)
@@ -11,7 +12,7 @@ Route::screen('pages', PageListScreen::class)
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.main')
-            ->push(__('PageController'), route('platform.websites.pages'));
+            ->push(__('Page'), route('platform.websites.pages'));
     });
 
 Route::screen('pages/add', PageAddScreen::class)

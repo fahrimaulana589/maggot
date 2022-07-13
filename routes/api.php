@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
@@ -19,17 +21,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/login', function (){
+    return response()->json(
+        [
+            "message" => "unauthorized"
+        ],403
+    );
+})->name("api.login");
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/user',[AuthController::class,"user"]);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
 
 Route::get("profile",[ProfileController::class,"get"])
     ->name("api.profile");
 
-Route::get("pages",[PageController::class,"getAll"])
-    ->name("api.pages");
-
-Route::get("pages/{page}",[PageController::class,"get"])
+Route::get("pages/{page:slug}",[PageController::class,"get"])
     ->name("api.pages.show")
     ->missing(function (){
         return response()->json([
@@ -49,9 +59,25 @@ Route::get("tutorials/{tutorial}",[TutorialController::class,"get"])
     });
 
 Route::get("tutorials/{tutorial}/steps",[StepController::class,"getAll"])
-    ->name("api.tutorials.steps");
+    ->name("api.tutorials.steps")
+    ->missing(function (){
+        return response()->json([
+            "step" => "data tidak ada"
+        ]);
+    });;
 
 Route::get("tutorials/{tutorial}/steps/{step}",[StepController::class,"get"])
+    ->name("api.tutorials.steps.show")
+    ->missing(function (){
+        return response()->json([
+            "step" => "data tidak ada"
+        ]);
+    });
+
+Route::get("artikels",[ArtikelController::class,"getAll"])
+    ->name("api.tutorials.artikels");
+
+Route::get("artikels/{artikel}",[ArtikelController::class,"get"])
     ->name("api.tutorials.steps.show")
     ->missing(function (){
         return response()->json([

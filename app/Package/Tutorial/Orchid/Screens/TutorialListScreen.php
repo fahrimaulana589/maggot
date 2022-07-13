@@ -29,7 +29,7 @@ class TutorialListScreen extends TutorialScreen
      */
     public function name(): ?string
     {
-        return 'Daftar TutorialController';
+        return 'Daftar Tutorial';
     }
 
     /**
@@ -61,7 +61,7 @@ class TutorialListScreen extends TutorialScreen
 
         $this->getTutorialService()->delete($tutorial);
 
-        $this->getOrchidComponent()->toastSukses("Edit","TutorialController");
+        $this->getOrchidComponent()->toastSukses("Edit","Tutorial");
 
     }
 }

@@ -60,7 +60,7 @@ class TutorialEditScreen extends TutorialScreen
     {
         return [
             Layout::block(TutorialAddEditLayout::class)
-                ->title("TutorialController")
+                ->title("Tutorial")
                 ->description("Silahkan masukan data tutorial"),
             Layout::rows([
                 $this->getOrchidRow()->rowContent("tutorial.description","Deskripsi"),
@@ -72,7 +72,7 @@ class TutorialEditScreen extends TutorialScreen
 
         $this->getTutorialService()->edit($request,$tutorial);
 
-        $this->getOrchidComponent()->toastSukses("Edit","TutorialController");
+        $this->getOrchidComponent()->toastSukses("Edit","Tutorial");
 
     }
 
@@ -80,7 +80,7 @@ class TutorialEditScreen extends TutorialScreen
 
         $this->getTutorialService()->delete($tutorial);
 
-        $this->getOrchidComponent()->toastSukses("Edit","TutorialController");
+        $this->getOrchidComponent()->toastSukses("Edit","Tutorial");
         return redirect()->route("platform.websites.tutorials");
     }
 }

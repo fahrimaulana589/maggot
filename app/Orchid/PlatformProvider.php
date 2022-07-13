@@ -14,6 +14,7 @@ use Orchid\Support\Color;
 class PlatformProvider extends OrchidServiceProvider
 {
     public MenuService $menuService;
+
     /**
      * @param Dashboard $dashboard
      */
@@ -58,6 +59,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.websites.tutorials')
                 ->permission('platform.websites.tutorials'),
 
+            Menu::make(__('Artikel'))
+                ->icon('layers')
+                ->route('platform.websites.artikels')
+                ->permission('platform.websites.artikels'),
+
             Menu::make(__('Page'))
                 ->icon('screen-desktop')
                 ->route('platform.websites.pages')
@@ -68,6 +74,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.systems.users')
                 ->permission('platform.systems.users')
                 ->title(__('Access rights')),
+
+            Menu::make(__('Pengunjung'))
+                ->icon('user')
+                ->route('platform.pengunjung')
+                ->permission('platform.websites.pengunjungs'),
 
             Menu::make(__('Roles'))
                 ->icon('lock')
@@ -84,7 +95,7 @@ class PlatformProvider extends OrchidServiceProvider
     public function registerProfileMenu(): array
     {
         return [
-            Menu::make('ProfileController')
+            Menu::make('Profile')
                 ->route('platform.profile')
                 ->icon('user'),
         ];
@@ -106,7 +117,9 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.websites.menus', __(' menu'))
                 ->addPermission('platform.websites.pages', __(' Page'))
                 ->addPermission('platform.websites.slides', __(' Slide'))
+                ->addPermission('platform.websites.artikels', __(' Artikel'))
                 ->addPermission('platform.websites.tutorials', __('Tutorial'))
+                ->addPermission('platform.websites.pengunjungs', __('Pengunjung'))
             ,
         ];
     }

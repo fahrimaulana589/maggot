@@ -77,7 +77,7 @@ class PageEditScreen extends Screen
     {
         return [
             Layout::block(PageAddEditLayout::class)
-                ->title("PageController")
+                ->title("Page")
                 ->description(
                     "Silahkan masukan data data berikut untuk membuta page baru"
                 ),
@@ -95,14 +95,14 @@ class PageEditScreen extends Screen
 
         $this->pageService->edit($request,$page);
 
-        $this->orchidComponent->toastSukses("Edit","PageController");
+        $this->orchidComponent->toastSukses("Edit","Page");
     }
 
     public function remove(Page $page){
 
         $this->pageService->delete($page);
 
-        $this->orchidComponent->toastSukses("Hapus","PageController");
+        $this->orchidComponent->toastSukses("Hapus","Page");
 
         return redirect()->route("platform.websites.pages");
     }

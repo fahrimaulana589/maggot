@@ -34,18 +34,6 @@ class MenuService
 
         $data = $request->validated();
 
-        $is_parent = array_key_exists("is_parent",$data);
-        $parent = array_key_exists("parent",$data);
-
-        if($is_parent){
-            $data["parent"] = null;
-        }else {
-            $data["is_parent"] = 0;
-            if (!$parent){
-                $data["parent"] = null;
-            }
-        }
-
         $this->menuRepository->create($data);
 
     }
@@ -53,18 +41,6 @@ class MenuService
     public function edit(MenuEditRequest $request,Menu $menu){
 
         $data = $request->validated();
-
-        $is_parent = array_key_exists("is_parent",$data);
-        $parent = array_key_exists("parent",$data);
-
-        if($is_parent){
-            $data["parent"] = null;
-        }else {
-            $data["is_parent"] = 0;
-            if (!$parent){
-                $data["parent"] = null;
-            }
-        }
 
         $this->menuRepository->edit($data,$menu);
 

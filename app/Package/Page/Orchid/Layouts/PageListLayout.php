@@ -21,6 +21,7 @@ class PageListLayout extends Table
      */
     protected $target = 'pages';
     public OrchidTable $orchidTable;
+    private OrchidComponent $orchidComponent;
 
     /**
      * @param OrchidComponent $orchidComponetn
@@ -41,12 +42,7 @@ class PageListLayout extends Table
         return array(
             $this->orchidTable->tableImage("image","Gambar"),
             $this->orchidTable->tableText("title","Judul"),
-            $this->orchidTable->tableLink("slug","Link")
-                ->render(function ($value){
-                    $url = url("page/".$value["slug"]);
-                    return $this->orchidComponent->linkTo("$url")
-                        ->href($url);
-                }),
+            $this->orchidTable->tableText("slug","Link"),
             $this->orchidTable->tableAction(
                 function ($data) {
                     return [

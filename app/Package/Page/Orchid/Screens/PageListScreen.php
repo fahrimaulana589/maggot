@@ -48,7 +48,7 @@ class PageListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Daftar PageController';
+        return 'Daftar Page';
     }
 
     /**
@@ -80,7 +80,7 @@ class PageListScreen extends Screen
 
         $this->pageService->delete($page);
 
-        $this->orchidComponet->toastSukses("Hapus","PageController");
+        $this->orchidComponet->toastSukses("Hapus","Page");
 
     }
 }

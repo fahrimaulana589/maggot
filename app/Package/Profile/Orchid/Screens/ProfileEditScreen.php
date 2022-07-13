@@ -48,7 +48,7 @@ class ProfileEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'ProfileController';
+        return 'Profile';
     }
 
     /**
@@ -83,6 +83,6 @@ class ProfileEditScreen extends Screen
 
         $this->profileService->edit($request);
 
-        $this->orchidComponent->toastSukses("Edit","ProfileController");
+        $this->orchidComponent->toastSukses("Edit","Profile");
     }
 }

@@ -3,7 +3,7 @@ $orchid-color: #007bff; //#ac5ca0;
 
 
 $white: #ffffff;
-$black: #1c2b36;
+$black: #11181c;
 
 $blue: #007bff !default;
 $indigo: #6610f2 !default;
@@ -19,12 +19,12 @@ $cyan: #17a2b8 !default;
 $primary: $orchid-color;
 $secondary: #6c757d !default;
 $light: #f8f9fa !default;
-$dark: #212529 !default;
+$dark: #1a163a !default;
 $grey: #495057;
 
 $grey-light: mix($grey, #ffffff, 10%);
 
-$body-bg: #edeef0; //lighten($light, 1%);
+$body-bg: #e9e6ee; //lighten($light, 1%);
 $text-color: #394247;
 $text-muted: lighten($text-color, 20%);
 
@@ -56,7 +56,7 @@ $input-border-focus: $cyan;
 $input-border-radius: $border-radius-base;
 $input-group-addon-border-color: $border-color;
 
-$panel-bg: #ffffff;
+$panel-bg: #f3c0c0;
 $panel-border: $border-color;
 $panel-heading-border: lighten($border-color, 5%);
 $panel-list-group-border: lighten($border-color, 5%);

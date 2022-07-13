@@ -1,5 +1,8 @@
 <?php
 
+use App\Package\pengunjung\Model\Pengunjung;
+use App\Package\user\Model\User;
+
 return [
 
     /*
@@ -40,6 +43,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'pengunjungs',
+        ],
     ],
 
     /*
@@ -62,13 +69,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \App\Package\user\Model\User::class,
+            'model' => User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'pengunjungs' => [
+            'driver' => 'eloquent',
+            'model' => Pengunjung::class,
+        ],
     ],
 
     /*
@@ -89,6 +95,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'pengunjungs' => [
+            'provider' => 'pelayans',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

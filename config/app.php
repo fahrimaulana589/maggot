@@ -204,7 +204,7 @@ return [
         App\Package\Menu\MenuServiceProvider::class,
         App\Package\Slide\SlideServiceProvider::class,
         App\Package\Profile\ProfileServiceProvider::class,
-        App\Package\Xample\XampleServiceProvider::class,
+        App\Package\Pengunjung\PengunjungServiceProvider::class,
         App\Package\Artikel\ArtikelServiceProvider::class,
         App\Package\Tutorial\TutorialServiceProvider::class,
         App\Package\Base\BaseOrchidServiceProvider::class,

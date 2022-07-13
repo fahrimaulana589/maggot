@@ -70,7 +70,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Auth PageController
+    | Auth Page
     |--------------------------------------------------------------------------
     |
     | The property controls the visibility of Orchid's built-in authentication pages.
@@ -211,7 +211,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Fallback PageController
+    | Fallback Page
     |--------------------------------------------------------------------------
     |
     | If the request does not match any route and arguments,

@@ -83,14 +83,14 @@ class SlideEditScreen extends Screen
 
         $this->slideService->edit($request,$page);
 
-        $this->orchidComponent->toastSukses("Edit","PageController");
+        $this->orchidComponent->toastSukses("Edit","Page");
     }
 
     public function remove(Slide $page){
 
         $this->slideService->delete($page);
 
-        $this->orchidComponent->toastSukses("Hapus","PageController");
+        $this->orchidComponent->toastSukses("Hapus","Page");
 
         return redirect()->route("platform.websites.slides");
     }

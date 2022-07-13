@@ -44,22 +44,6 @@ class MenuEditScreen extends Screen
         ];
     }
 
-    public function asyncSum(int $is_parent = null)
-    {
-
-        if(session("is_parent",0) == 0){
-            session(['is_parent' => 1]);
-        }
-        else if (session("is_parent",0) == 1){
-            session(['is_parent' => 0]);
-        }
-
-        return [
-            'is_parent' => session("is_parent",0),
-        ];
-
-    }
-
     /**
      * Display header name.
      *
@@ -96,7 +80,6 @@ class MenuEditScreen extends Screen
             Layout::block(MenuAddEditLayout::class)
                 ->title("Menu")
                 ->description("Mohon masukan data menu"),
-            Layout::block(MenuAddEditListener::class)
         ];
     }
 
