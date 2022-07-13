@@ -1,0 +1,34 @@
+{
+    "name": "get-stream/stream",
+    "description": "A PHP client for Stream (https://getstream.io)",
+    "keywords": ["stream", "newsfeed", "feedly"],
+    "homepage": "https://getstream.io",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Tommaso Barbugli",
+            "email": "support@getstream.io"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "guzzlehttp/guzzle": "^6.3.3 || ^7.0.1",
+        "firebase/php-jwt": "^v5.0.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.18.0",
+        "phan/phan": "^4.0.3",
+        "phpunit/phpunit": "^8.2.1",
+        "ramsey/uuid": "^3.8"
+    },
+    "autoload": {
+        "psr-0": {
+            "GetStream\\Stream" : "lib/"
+        },
+        "psr-4": {
+            "GetStream\\Stubs\\" : "tests/stubs/",
+            "GetStream\\Unit\\" : "tests/unit/",
+            "GetStream\\Integration\\" : "tests/integration/"
+        }
+    }
+}
